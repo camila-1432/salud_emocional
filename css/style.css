@@ -1,0 +1,454 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --white: #fff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-image: url('../img/abner3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    /* Importante: Quitamos el overlay oscuro para que la imagen se vea "completa" */
+}
+
+/* ELIMINADA la regla 'body::before' que oscurecía la imagen de fondo */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.9));
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+}
+
+nav {
+    /* CAMBIO: Fondo completamente opaco para una mejor definición */
+    background-color: var(--primary-color); 
+    padding: 1rem;
+    /* CAMBIO: Eliminamos 'sticky' para que se desplace con la página */
+    position: relative; 
+    top: auto; 
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+nav ul {
+    list-style: none; /* Asegurar que no haya viñetas */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+nav a:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.marquee {
+    background-color: rgba(231, 76, 60, 0.9);
+    color: var(--white);
+    padding: 1rem;
+    text-align: center;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 10;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.section {
+    padding: 3rem 1rem;
+    /* CAMBIO: Menor opacidad para que la imagen de fondo se vea más. */
+    background-color: rgba(255, 255, 255, 0.8); /* Blanco con 80% de opacidad */
+    margin: 2rem 0;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 500px; /* Reducimos el ancho máximo para favorecer el formato vertical */
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    /* Aumentamos la altura para un formato vertical prominente */
+    height: 600px; 
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%; 
+}
+
+.carousel-item {
+    min-width: 100%;
+    height: 100%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    /* Aseguramos que la imagen cubra el espacio vertical sin distorsionarse */
+    object-fit: cover; 
+}
+
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.feature-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.video-section {
+    background-color: rgba(44, 62, 80, 0.95);
+    color: var(--white);
+    text-align: center;
+    padding: 3rem 1rem;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    position: relative;
+    padding-bottom: 56.25%; 
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.links-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.link-item {
+    background: var(--white);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: var(--transition);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.link-item:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+    transform: translateX(5px);
+}
+
+.contact-section {
+    background: linear-gradient(135deg, rgba(236, 240, 241, 0.95), rgba(189, 195, 199, 0.95));
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 2rem auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+button[type="submit"] {
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+button[type="submit"]:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+footer {
+    background-color: rgba(44, 62, 80, 0.95);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.social-link {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.social-link:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Custom scrollbar for comments section */
+.comment-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.comment-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.comment-list::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.comment-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Animation for elements on scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    /* ... (tus reglas @media anteriores) ... */
+    
+    .carousel-container {
+        /* Ajustamos también para pantallas más pequeñas, manteniendo la proporción vertical */
+        height: 450px; /* Un poco menos alto para móviles, pero sigue siendo vertical */
+        max-width: 100%; /* Permitimos que ocupe todo el ancho disponible */
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+    }
+    
+    /* El carrusel usa 400px en la versión de escritorio, es un buen tamaño para móvil */
+    .carousel-container {
+        height: 300px; 
+    }
+    
+    .nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
