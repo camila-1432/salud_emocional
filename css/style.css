@@ -150,18 +150,18 @@ nav a:hover {
 
 .carousel-container {
     position: relative;
-    max-width: 500px; /* Reducimos el ancho máximo para favorecer el formato vertical */
+    max-width: 500px; 
     margin: 0 auto;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: var(--shadow);
-    /* Aumentamos la altura para un formato vertical prominente */
     height: 600px; 
 }
 
 .carousel {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    /* ¡Aquí está el ajuste de velocidad! */
+    transition: transform 0.3s ease-in-out; 
     height: 100%; 
 }
 
@@ -193,11 +193,6 @@ nav a:hover {
 }
 
 
-
-.carousel-btn:hover {
-    background: rgba(255, 255, 255, 1);
-    transform: scale(1.1);
-}
 
 .carousel-dots {
     display: flex;
